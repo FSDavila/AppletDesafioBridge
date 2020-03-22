@@ -4,10 +4,9 @@ import path from 'path'
 
 import express from 'express'
 import bodyParser from 'body-parser'
+import axios from 'axios'
 
 import obtemDados from './dados'
-
-var bodyParser1 = require('body-parser')
 
 const certificados = {
   key: fs.readFileSync(path.resolve(__dirname, '../cert/key.pem')),
@@ -17,18 +16,20 @@ const certificados = {
 const port = 3000
 
 const app = express()
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(path.resolve(__dirname, '../publico')))
 
+var instance = axios.create({
+    baseURL: 'http://localhost:3000',
+    timeout: 2000,
+    headers: { 'X-Custom-Header': 'foobar' }
+});
 
-/* app.get('/valores', (req, res) => {
-    let input = obtemDados(7)
-    console.log(req.body)
-    setTimeout(() => res.json(input), 2000)
-}) */
 
-app.post('/valores', (req, res) => {
+app.get('/valores', (req, res) => {
+    console.log(req.body.number)
     let input = obtemDados(req.body.number)
     console.log(input)
     setTimeout(() => res.json(input), 2000)
