@@ -6,17 +6,6 @@ function ehPrimo(n) {
     return n > 1;
 }
 
-function detectaDivisores2(number) {
-    var start = 2
-    var divisores = []
-    while (start <= Math.sqrt(number)) {
-        if (number % start++ < 1) {
-            divisores.push(start)
-        }
-    }
-    return divisores;
-}
-
 function detectaDivisores(n) {
     var divisores = []
     for (var i = n; i > 0; i--) {

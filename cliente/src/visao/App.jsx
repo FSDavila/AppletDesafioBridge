@@ -17,7 +17,7 @@ const EnumSituacao = {
 
 function useModelo() {
 
-    function organizaDados(valores) {
+    function organizaDados(values) {
       /*  var divisores = dados.dataset[0]
         var ehPrimo = dados.dataset[1]
         return [divisores, ehPrimo] */
@@ -30,10 +30,17 @@ function useModelo() {
 
     useEffect(() => {
         if (estado.situacao === EnumSituacao.PESQUISANDO) {
-            window.fetch('/valores')
-                .then(r => r.json())
+            window.fetch('/valores', {
+                method: 'post',
+                headers: {
+                    'Authorization': 'Bearer token',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(setEstado({ dados: data, situacao: EnumSituacao.EXIBINDO }))
+            /*
+                .then(res => res.json())
                 .then(dadosOrganizados =>
-                    setEstado({ dados: organizaDados(dadosOrganizados), situacao: EnumSituacao.EXIBINDO }))
+                    setEstado({ dados: dadosOrganizados, situacao: EnumSituacao.EXIBINDO })) */
         }
     }, [estado.situacao])
 
@@ -43,13 +50,13 @@ function useModelo() {
     }
 
     function pesquisar() {
-        setEstado({dados: undefined, situacao: EnumSituacao.PESQUISANDO})
+        setEstado({ dados: undefined, situacao: EnumSituacao.PESQUISANDO })
     }
 
     return [estado, {pesquisar, reinicia}]
 }
 
-
+//<Button label="Calcular" onClick={() => pesquisar()} />
 const App = () => {
     const [estado, {pesquisar, reinicia}] = useModelo()
 
@@ -59,13 +66,12 @@ const App = () => {
         case EnumSituacao.INICIAL: {
             conteudo =
                 <Panel header='Applet de calculo divisores / Numero Primo'>
-                    <form action='/dados' method="POST">
+                <form enctype="" action="/valores" method="post">
                         <label>
                             Numero: 
-                            <input id="numero" type="number" name="numero" /> 
-                        </label>
-                    <Button label="Calcular" onClick={() => pesquisar()} />
-
+                            <input id="number" type="number" name="number" /> 
+                        </label>     
+                    <button>Calcular </button>
                     </form>
                 </Panel>
             break
@@ -82,7 +88,7 @@ const App = () => {
         case EnumSituacao.EXIBINDO: {
             const dados = {
                 divisores: estado.dados.divisores,
-                ehPrimo: estado.dados.ehPrimo
+                ehPrimo: estado.dados[1]    
             }
             conteudo =
                 <Panel header='Applet de calculo divisores / Numero Primo'>

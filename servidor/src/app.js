@@ -3,8 +3,11 @@ import fs from 'fs'
 import path from 'path'
 
 import express from 'express'
+import bodyParser from 'body-parser'
 
 import obtemDados from './dados'
+
+var bodyParser1 = require('body-parser')
 
 const certificados = {
   key: fs.readFileSync(path.resolve(__dirname, '../cert/key.pem')),
@@ -12,17 +15,23 @@ const certificados = {
 }
 
 const port = 3000
-var bodyParser = require('body-parser')
+
 const app = express()
-app.use(express.static(path.resolve(__dirname, '../publico')))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.static(path.resolve(__dirname, '../publico')))
 
-app.get('/valores', (req, res) => {
-    let input = req.body
-    let valores = obtemDados(input)
+
+/* app.get('/valores', (req, res) => {
+    let input = obtemDados(7)
+    console.log(req.body)
+    setTimeout(() => res.json(input), 2000)
+}) */
+
+app.post('/valores', (req, res) => {
+    let input = obtemDados(req.body.number)
     console.log(input)
-    setTimeout(() => res.json(valores), 2000)
+    setTimeout(() => res.json(input), 2000)
 })
 
 const server = https.createServer(certificados, app)
