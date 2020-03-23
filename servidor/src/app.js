@@ -28,12 +28,15 @@ var instance = axios.create({
 });
 
 
-app.get('/valores', (req, res) => {
-    console.log(req.body.number)
-    let input = obtemDados(req.body.number)
-    console.log(input)
-    setTimeout(() => res.json(input), 2000)
+app.post('/valores', (req, res) => {
+   console.log(req.body.number)
+    /* let input = obtemDados(req.body.number)
+    console.log(input) 
+    setTimeout(() => res.json(obtemDados(req.body.number)), 2000) */
+    console.log(obtemDados(req.body.number))
+    setTimeout(() => res.json(obtemDados(req.body.number)), 2000)
 })
+
 
 const server = https.createServer(certificados, app)
 

@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "tarefa-App",
+      "appliesTo": "cliente/src/visao/App.jsx",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "tarefa-axios",
+      "appliesTo": "cliente/src/axios.js",
+      "type": "launch"
+    }
+  ]
+}

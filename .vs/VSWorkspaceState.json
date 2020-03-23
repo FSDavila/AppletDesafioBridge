@@ -3,11 +3,12 @@
     "",
     "\\cliente",
     "\\cliente\\src",
+    "\\cliente\\src\\components",
     "\\cliente\\src\\visao",
     "\\servidor",
     "\\servidor\\cert",
     "\\servidor\\src"
   ],
-  "SelectedNode": "\\cliente\\src\\index.js",
+  "SelectedNode": "\\servidor\\src\\app.js",
   "PreviewInSolutionExplorer": false
 }

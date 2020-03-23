@@ -3,6 +3,7 @@ import { Panel } from 'primereact/panel'
 import { Button } from 'primereact/button'
 import { ProgressBar } from 'primereact/progressbar'
 import { InputText } from 'primereact/inputtext'
+import { Test } from './Test'
 import axios from 'axios'
     
 
@@ -46,6 +47,23 @@ const EnumSituacao = {
 
 function useModelo() {
 
+    async function postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
+    }
     
 
     function organizaDados(values) {
@@ -59,13 +77,27 @@ function useModelo() {
 
     const [estado, setEstado] = useState(estadoInicial)
 
-
     useEffect(() => {
         if (estado.situacao === EnumSituacao.PESQUISANDO) {
-            fetch('/valores')
+            axios.post('/valores', { number: 7 })
+                .then(function (response) {
+                    console.log(response)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+
+            /*
+            postData(`/valores`, { number: 7 })
+                .then(res => res.json())
+                .then((data) => {
+                    console.log(data); // JSON data parsed by `response.json()` call
+                });*/
+
+            /*fetch('/valores')
                 .then(r => r.json())
                 .then(dadosEmArray =>
-                    setEstado({ dados: organizaDados(dadosEmArray), situacao: EnumSituacao.EXIBINDO }))
+                    setEstado({ dados: organizaDados(dadosEmArray), situacao: EnumSituacao.EXIBINDO })) */
         }
     }, [estado.situacao])
 
@@ -79,8 +111,7 @@ function useModelo() {
     }
 
     function setDados(data) {
-        setEstado({ dados: data })
-        console.log(estado.dados)
+       setEstado({ dados: data })
     }
 
 
@@ -98,13 +129,9 @@ const App = () => {
         case EnumSituacao.INICIAL: {
             conteudo =
                 <Panel header='Applet de calculo divisores / Numero Primo'>
-                <form onSubmit={() => pesquisar()}>
-                    <input
-                        type="number"
-                        id="number"
-                        name="number"
-                    />
-                    <button type="submit">Add card</button>
+                <form>
+                    <input id="number" type="number" name="number" />
+                    <Button label="Calcular" onClick={() => pesquisar()} />
                 </form>
                 </Panel>
             break
