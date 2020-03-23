@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component, useState, useEffect } from 'react';
 import { Panel } from 'primereact/panel'
 import { Button } from 'primereact/button'
 import { ProgressBar } from 'primereact/progressbar'
 import { InputText } from 'primereact/inputtext'
-import { Test } from './Test'
+//import Test from './Test.jsx';
 import axios from 'axios'
     
 
@@ -129,6 +129,7 @@ const App = () => {
         case EnumSituacao.INICIAL: {
             conteudo =
                 <Panel header='Applet de calculo divisores / Numero Primo'>
+               
                 <form>
                     <input id="number" type="number" name="number" />
                     <Button label="Calcular" onClick={() => pesquisar()} />
