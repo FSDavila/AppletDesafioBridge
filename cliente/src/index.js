@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import App from './visao/App.jsx'
-//import Test from './visao/Test.jsx'
+import UI from './visao/UI.jsx'
 
-const elem = document.createElement('div')
+const elemento = document.createElement('div')
 
-document.body.append(elem)
+document.body.append(elemento)
 
-ReactDOM.hydrate(<App />, elem)
+ReactDOM.render(<UI />, elemento)

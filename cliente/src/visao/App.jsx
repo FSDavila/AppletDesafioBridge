@@ -161,9 +161,11 @@ const App = () => {
     }
 
     return (
+        <div>
         <Panel header='Verificador de divisores - Detector de numeros Primos'>
             <div>{conteudo}</div>
-        </Panel>
+            </Panel>
+            </div>
     )
 
 }
