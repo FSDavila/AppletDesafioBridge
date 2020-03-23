@@ -1,15 +1,14 @@
 import React, { Component, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import 'primereact/resources/themes/nova-light/theme.css'
-import 'primereact/resources/primereact.min.css'
-import 'primeicons/primeicons.css'
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 class Test extends React.Component {
     constructor(props) {
         super(props);
         this.state = { numero: 'toba' };
     }
-
 
     render() {
         return (
