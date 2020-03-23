@@ -17,11 +17,6 @@
   "keywords": [
     "PrimeReact"
   ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
-    }
-  ],
   "author": "Filipe S. Davila",
   "license": "ISC",
   "dependencies": {
