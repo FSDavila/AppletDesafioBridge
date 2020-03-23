@@ -8,7 +8,7 @@
   "description": "Lado servidor do applet do desafio bridge - verifica divisores e se um numero eh primo",
   "scripts": {
     "start": "nodemon --exec npx babel-node src/app.js",
-    "build": "babel src -d build",
+    "build": "babel -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -29,6 +29,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "heroku": "^7.39.1",
+    "phantomjs": "^2.1.7",
     "prop-types": "^15.7.2",
     "react": "^16.13.1"
   },
