@@ -7,10 +7,6 @@
     "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": ">=7.6.0",
-    "npm": ">=4.1.2"
-  },
   "proxy": "http://localhost:3000",
   "keywords": [
     "React",
