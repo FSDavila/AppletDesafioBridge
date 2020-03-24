@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "nodemon --exec npx babel-node servidor/src/app.js",
-    "build": "babel src -d build",
+    "build": "babel servidor/src -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
