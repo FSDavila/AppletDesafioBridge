@@ -4,19 +4,25 @@ A aplicação toma um dado (numero) de uma input cujo eh fornecido pelo usuario,
 
 ### Tecnologias Utilizadas
 
--Node.js (Backend)
+-Node.js (Backend Engine)
 
--Express (Para passar os dados para o backend)
+-Express (Para passar os dados para o backend e principalmente, para gerar o servidor Express)
 
 -React.js (DOM principal utilizada para gerar as views de acordo com o modelo de dados)
 
--Biblioteca PrimeReact (componentes prontos React com estilos CSS predefinidos)
+-Biblioteca PrimeReact (Componentes prontos React com estilos CSS predefinidos)
 
--Webpack
+-Webpack (bundler)
 
--Eslint / Babel
+-Eslint / Babel (verificador e transpilador respectivamente)
 
 -Nodemon (Como o nome diz, monitora as modificacoes no node)
+
+-Axios (para tratamento das requests / responses)
+
+-npm (não poderia faltar hahahahahah)
+
+-Heroku (disponibilizarei o link aqui ainda)
 
 ## Instruções para instalacao dos pacotes necessarios
 Assim que baixar/clonar o respositorio, entre no diretorio "cliente" pelo terminal / CMD (nesse caso sendo necessario instalar o node.js mais atualizado primeiro) e digite
