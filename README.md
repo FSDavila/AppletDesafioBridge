@@ -22,7 +22,7 @@ A aplicação toma um dado (número) de um input cujo é fornecido pelo usuário
 
 -npm (não poderia faltar hahahahahah)
 
--Heroku (disponibilizarei o link aqui ainda)
+-Heroku (Link para aplicação no Ambiente Heroku -> https://aqueous-everglades-18633.herokuapp.com/)
 
 ## Instruções para instalacao dos pacotes necessarios
 Assim que baixar/clonar o respositório, entre no diretírio "cliente" pelo terminal / CMD (nesse caso sendo necessário instalar o node.js mais atualizado primeiro) e digite
