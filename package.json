@@ -11,7 +11,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "node build/app.js",
+    "start": "nodemon --exec npx babel-node src/app.js",
     "build": "node build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

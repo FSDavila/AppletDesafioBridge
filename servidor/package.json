@@ -6,9 +6,13 @@
   "name": "applet_divisores_ehprimo_serverside",
   "version": "1.0.0",
   "description": "Lado servidor do applet do desafio bridge - verifica divisores e se um numero eh primo",
+  "engines": {
+    "node": "12.16.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "start": "nodemon --exec npx babel-node src/app.js",
-    "build": "babel src -d build",
+    "build": "node build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

@@ -5,8 +5,9 @@
     "\\cliente\\src",
     "\\cliente\\src\\visao",
     "\\servidor",
+    "\\servidor\\cert",
     "\\servidor\\src"
   ],
-  "SelectedNode": "\\servidor",
+  "SelectedNode": "\\servidor\\package.json",
   "PreviewInSolutionExplorer": false
 }
