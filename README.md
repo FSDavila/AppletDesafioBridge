@@ -1,6 +1,6 @@
 ### Applet calculo de divisores e detector de numeros primos (Desafio Bridge 2020.1)
 
-A aplicação toma um dado (numero) de uma input cujo eh fornecido pelo usuario, utilizado pelo backend para montar a resposta com os respectivos divisores e a informacao sobre o numero ser primo ou nao. Mostra os dados em uma tabela na tela.
+A aplicação toma um dado (numero) de uma input cujo eh fornecido pelo usuario, utilizado pelo backend para montar a resposta com os respectivos divisores e a informacao sobre o numero ser primo ou nao. Mostra os dados em uma tabela na tela. Também guarda cada um dos valores submetidos pelo usuário durante a execução atual do sistema.
 
 ### Tecnologias Utilizadas
 
