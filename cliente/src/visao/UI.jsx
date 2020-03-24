@@ -11,83 +11,100 @@ class UI extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            dados: [[], false],
-            divisores: [],
-            ehPrimo: '',
-            status: 0
+            input: "", //guarda o valor digitado pelo usuario
+            dados: [[], false], //guarda a resposta crua da requisicao feita via axios
+            divisores: [[], []], //guarda o array de divisores do valor informado
+            ehPrimo: '', //apenas guarda a resposta da verificacao n primo
+            status: 0, //equivalente a um enum de status 0 = inicial 1 = exibindo dados
+            code: [], //fragmento html a ser exibido no momento
+            history: [] //array que guarda os numeros submetidos anteriormente ao app
         };
     }
 
-    myChangeHandler = (event) => {
-        this.setState({ username: event.target.value });
+    gerenciadorInput = (event) => {
+        this.setState({ input: event.target.value });
     }
 
-    handleSubmit = (event) => {
+    enviarDados = (event) => {
         event.preventDefault()
 
-        axios.post(`/valores`, { number: this.state.username }).then(res => {
-            this.setState({ dados: res.data })
-        })
-
+        axios.post(`/valores`, { number: this.state.input}).then(res => {
+            this.setState({ dados: res.data, status: 1 })
+        }).then(this.preparaDados)
+        
     }
 
-    
-    /*mostraDados = (event) => {
-        event.preventDefault()
-        valores = this.state.dados[0].forEach(valores => { valores.push })
-        this.setState
-    }*/
-
-    preparaDados = (event) => {
-        event.preventDefault()
-        var boolao = this.state.dados[1]
-        var divisors = []
-        divisors = this.state.dados[0]
+    preparaDados = () => {
+        this.state.history.push(this.state.input) //guarda o valor imputado no historico
+        if (this.state.dados[1] === true) { //seta o valor da string que indica se eh ou nao primo
+            this.setState({ ehPrimo: 'Primo' })
+        }
+        else {
+            this.setState({ ehPrimo: 'Nao Primo' })
+        }
+        var divisors = [[], []] //prepara o array com os dados dos divisores
+        for (var i = 0; i < this.state.dados[0].length ; i++) {
+            divisors[0].push(i)
+            divisors[1].push(this.state.dados[0][i])
+        }
         this.setState({ divisores: divisors, status: 1 })
     }
 
-    renderSwitch = (event) => {
+    reducer = () => {
+        const reducer = ([index, divisor], [ind, div]) => [index.concat(ind), divisor.concat(div)]
+        const inicial = [[], []]
+        const [index, divisor] = dados.reduce(reducer, inicial)
+        return { index , divisor }
+    }
+
+    listItems = () => {
+        this.state.divisores[0].map((number) => <li>{number}</li>)
+    }
+
+    reiniciar = (event) => {
         event.preventDefault()
+        this.setState({ code: [], status: 0, divisores : [], ehPrimo : '', dados: [[], false], input: '' }) //reinicia o app exceto a variavel que guarda o historico
+    }
+
+    renderSwitch = (event) => {
+        event.preventDefault()  
         var body
         switch (this.state.status) {
             case 0: {
                  body =
-                    <Panel header='Applet de calculo de divisores / detector de numeros primos'>
+                     <Panel header='Visao do Applet'>
                         <form>
                             <p>Insira o valor a ser verificado:</p>
-                            <input type='text' onChange={this.myChangeHandler} id="number" name="number" />
-                            <Button label="Calcular" onClick={this.handleSubmit} />
-                            <Button label="Mostrar" onClick={this.preparaDados} />
-                            <h1>{this.state.ehPrimo}</h1>
-                            {this.preparaDados}
+                         <input type='text' onChange={this.gerenciadorInput} id="number" name="number" />{" "}
+                         <Button label="Calcular" onClick={this.enviarDados} />{" "}
+                         <Button label="Mostrar" className="p-button-success" icon="pi pi-check" onClick={this.renderSwitch} />
                         </form>
                     </Panel>
                 break
             }
             case 1: {
-                body =
+                body = 
+                    <Panel header='Visao do Applet'>
                     <div>
-                        <ul>
-                            {
-                                this.state.divisores.map((item, i) => <li key={i}>Test</li>)
-                            })
-                        }
-                    </ul>
+                        <ul>{this.listItems}</ul>
                     </div>
+                    </Panel>
                 break
             }
         }
-        return body
+        this.setState({ code: body })
     }
+
+ 
 
     //<h1>Insira o valor a ser verificado: {this.state.username}</h1>
     render() {
-        let body
         return (
-            <Panel header='Applet de calculo de divisores / detector de numeros primos'>
-                <Button label="afodase" onClick={body = this.renderSwitch} />
-                {body}
+            <Panel header='Applet de calculo de divisores / detector de numeros primos' >
+                <Button label="Iniciar App" onClick={this.renderSwitch} />{" "}
+                <Button className="p-button-danger" icon="pi pi-times" onClick={this.reiniciar} />
+                <p>Numeros ja utilizados: <ul>{this.state.history.map((number) => <li>{number}</li>)}</ul></p>
+                {this.state.code}
             </Panel>
         )
     }
