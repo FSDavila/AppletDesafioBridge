@@ -86,7 +86,9 @@ class UI extends React.Component {
                 body = 
                     <Panel header='Visao do Applet'>
                     <div>
-                        <ul>{this.listItems}</ul>
+                        <h2>Numero {this.state.input} eh {this.state.ehPrimo}</h2>
+                        <h2>Divisores de {this.state.input}</h2>
+                        <ul>{this.state.divisores[1].map((number) => <li> - {number}</li>)}</ul>
                     </div>
                     </Panel>
                 break
