@@ -11,7 +11,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "node servidor/app.js",
+    "start": "node build/app.js",
     "build": "babel servidor/src -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
