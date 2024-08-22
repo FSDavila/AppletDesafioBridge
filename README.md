@@ -2,17 +2,18 @@
 The application takes a numerical input from the user, which is used by the backend to generate a response with the respective divisors and information on whether the number is prime or not. It displays the data in a table on the screen. It also stores each of the values submitted by the user during the current execution of the system.
 
 ### Technologies Used
-Node.js (Backend Engine)
-Express (For passing data to the backend and mainly for generating the Express server)
-React.js (Main DOM used to generate views according to the data model)
-PrimeReact Library (Ready-to-use React components with predefined CSS styles)
-Webpack (Bundler)
-Eslint / Babel (Linter and transpiler respectively)
-Nodemon (As the name suggests, monitors changes in Node)
-Axios (For handling requests / responses)
-npm (Couldn’t miss it hahahahahah)
-Heroku (Link to the application on the Heroku Environment -> https://aqueous-everglades-18633.herokuapp.com/)
-Instructions for Installing Necessary Packages
+-Node.js (Backend Engine)
+-Express (For passing data to the backend and mainly for generating the Express server)
+-React.js (Main DOM used to generate views according to the data model)
+-PrimeReact Library (Ready-to-use React components with predefined CSS styles)
+-Webpack (Bundler)
+-Eslint / Babel (Linter and transpiler respectively)
+-Nodemon (As the name suggests, monitors changes in Node)
+-Axios (For handling requests / responses)
+-npm 
+-Heroku (Link to the application on the Heroku Environment -> https://aqueous-everglades-18633.herokuapp.com/)
+
+## Instructions for Installing Necessary Packages
 Once you download/clone the repository, navigate to the "client" directory via terminal / CMD (in this case, you may need to install the latest version of Node.js first) and type
 
 npm install
