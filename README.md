@@ -1,72 +1,56 @@
-### Applet calculo de divisores e detector de numeros primos (Desafio Bridge 2020.1)
+### Divisor Calculation and Prime Number Detector Applet (Bridge Challenge 2020.1)
+The application takes a numerical input from the user, which is used by the backend to generate a response with the respective divisors and information on whether the number is prime or not. It displays the data in a table on the screen. It also stores each of the values submitted by the user during the current execution of the system.
 
-A aplicação toma um dado (número) de um input cujo é fornecido pelo usuário, utilizado pelo backend para montar a resposta com os respectivos divisores e a informação sobre o número ser primo ou não. Mostra os dados em uma tabela na tela. Também guarda cada um dos valores submetidos pelo usuário durante a execução atual do sistema.
+### Technologies Used
+Node.js (Backend Engine)
+Express (For passing data to the backend and mainly for generating the Express server)
+React.js (Main DOM used to generate views according to the data model)
+PrimeReact Library (Ready-to-use React components with predefined CSS styles)
+Webpack (Bundler)
+Eslint / Babel (Linter and transpiler respectively)
+Nodemon (As the name suggests, monitors changes in Node)
+Axios (For handling requests / responses)
+npm (Couldn’t miss it hahahahahah)
+Heroku (Link to the application on the Heroku Environment -> https://aqueous-everglades-18633.herokuapp.com/)
+Instructions for Installing Necessary Packages
+Once you download/clone the repository, navigate to the "client" directory via terminal / CMD (in this case, you may need to install the latest version of Node.js first) and type
 
-### Tecnologias Utilizadas
+npm install
 
--Node.js (Backend Engine)
+to install the packages used on the client side.
 
--Express (Para passar os dados para o backend e principalmente, para gerar o servidor Express)
+Then access the "server" directory via terminal / CMD and type
 
--React.js (DOM principal utilizada para gerar as views de acordo com o modelo de dados)
+npm install
 
--Biblioteca PrimeReact (Componentes prontos React com estilos CSS predefinidos)
+to install the packages used on the server side.
 
--Webpack (bundler)
+## Running Locally on the Client Side
+To start the client-side system locally in development mode, go to the "client" directory and type
 
--Eslint / Babel (verificador e transpilador respectivamente)
+npm start
 
--Nodemon (Como o nome diz, monitora as modificações no node)
+Every time a client-side file is changed, Webpack will be triggered to generate a new version of the necessary client-side files. These files are stored in the "public" directory within the "server" directory.
 
--Axios (para tratamento das requests / responses)
+## Running Locally on the Server Side
+To start the server-side system locally in development mode, go to the "server" directory and type
 
--npm (não poderia faltar hahahahahah)
+npm start
 
--Heroku (Link para aplicação no Ambiente Heroku -> https://aqueous-everglades-18633.herokuapp.com/)
+Check the console for the line "Server online on port number XXXX". If it appears, to access the application, go to your browser and type the address https://localhost:3000 (It is important to use https as the application comes with pre-configured certificates. If a security warning appears from your browser, just accept it by clicking the 'Advanced' button and proceed).
 
-## Instruções para instalacao dos pacotes necessarios
-Assim que baixar/clonar o respositório, entre no diretírio "cliente" pelo terminal / CMD (nesse caso sendo necessário instalar o node.js mais atualizado primeiro) e digite
+## Generating Production Build
+Client Side
+To generate the production version on the client side, go to the "client" directory and type
 
-'npm install'
+npm run build
 
-para instalar os pacotes utilizados pelo lado cliente.
+## Server Side
+To generate the production version on the server side, go to the "server" directory and type
 
-Em seguida acesse o diretório "servidor" pelo terminal / CMD e digite
+npm run build
 
-'npm install'
+## Running the Application in Production Mode
+To run the application in production mode, go to the "server" directory and type
 
-para instalar os pacotes utilizados pelo lado servidor.
-
-
-### Rodando localmente Lado Cliente
-Para iniciar o sistema do lado cliente localmente em modo desenvolvimento entre no diretorio "cliente" e digite
-
-'npm start'
-
-Toda vez que um arquivo do lado cliente for alterado o Webpack será acionado para gerar uma nova versão dos arquivos necessários para o lado cliente. Estes arquivos estão armazenados no diretorio "público" dentro do diretório "servidor".
-
-### Rodando localmente Lado Servidor
-Para iniciar o sistema do lado cliente localmente em modo desenvolvimento entre no diretório "servidor" e digite
-
-'npm start'
-
-Verifique no console se lá consta a linha "Servidor online na porta numero XXXX". Se sim, para efetuar o acesso, entre no navegador e digite o endereço https://localhost:3000 (É importante inserir https pois o aplicativo vem com certificados prontos. caso apareça alguma mensagem de aviso sobre segurança vinda de seu browser, apenas aceite clicando no botão 'avançado' e prossiga)
-
-### Gerando build modo Produção
-
-## Do Lado Cliente
-
-Para gerar a versão em produção do lado cliente entre no diretório "cliente" e digite
-
-'npm run build'
-
-## Do Lado Servidor
-
-Para gerar a versão em produção do lado servidor entre no diretorio "servidor" e digite
-
-'npm run build'
-
-## Executando a aplicação em modo produção
-Para executar a aplicação em modo produção entre no diretório "servidor" e digite
-
-'node build/app.js'
+node build/app.js
